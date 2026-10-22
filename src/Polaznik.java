@@ -35,8 +35,6 @@ public class Polaznik {
     }
 
     public void ispisiPodatke() {
-        System.out.println("Ime: " + ime);
-        System.out.println("Prezime: " + prezime);
-        System.out.println("E-mail: " + email);
+        System.out.println("Polaznik: " + ime + " " + prezime + ", Email: " + email);
     }
 }
