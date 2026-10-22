@@ -41,9 +41,11 @@ public class EvidencijaPolaznika {
             if (polaznik.getEmail().equalsIgnoreCase(pretraga)) {
                 polaznik.ispisiPodatke();
                 postoji = true;
-            } else {
-                System.out.println("Korisnik nije pronadjen.");
             }
+        }
+
+        if (!postoji) {
+            System.out.println("Korisnik nije pronadjen.");
         }
 
     }
