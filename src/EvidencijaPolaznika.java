@@ -17,6 +17,8 @@ public class EvidencijaPolaznika {
 
         Polaznik polaznik = new Polaznik(ime, prezime, email);
         polaznici.add(polaznik);
+
+        System.out.println("Polaznik je upisan.");
     }
 
     public static void main(String[] args) {
