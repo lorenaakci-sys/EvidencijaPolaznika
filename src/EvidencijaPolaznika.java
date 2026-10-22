@@ -7,17 +7,22 @@ public class EvidencijaPolaznika {
     static Scanner scanner = new Scanner(System.in);
 
     public static void unesiPolaznika() {
-        System.out.println("Ime: ");
-        String ime = scanner.nextLine();
-        System.out.println("Prezime: ");
-        String prezime = scanner.nextLine();
-        System.out.println("Email: ");
-        String email = scanner.nextLine();
+        String odgovor = "da";
 
-        Polaznik polaznik = new Polaznik(ime, prezime, email);
-        polaznici.add(polaznik);
+        while(odgovor.equalsIgnoreCase("da")) {
+            System.out.println("Ime: ");
+            String ime = scanner.nextLine();
+            System.out.println("Prezime: ");
+            String prezime = scanner.nextLine();
+            System.out.println("Email: ");
+            String email = scanner.nextLine();
 
-        System.out.println("Polaznik je upisan.");
+            Polaznik polaznik = new Polaznik(ime, prezime, email);
+            polaznici.add(polaznik);
+
+            System.out.println("Polaznik je upisan. Želite li dodati još korisnika? da/ne");
+            odgovor = scanner.nextLine();
+        }
     }
 
     public static void ispisPolaznika() {
