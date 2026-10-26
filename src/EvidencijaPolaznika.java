@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Scanner;
 
 public class EvidencijaPolaznika {
 
-    static ArrayList<Polaznik> polaznici = new ArrayList<>();
+    static HashSet<Polaznik> polaznici = new HashSet<>();
     static Scanner scanner = new Scanner(System.in);
 
     public static void unesiPolaznika() {
@@ -17,11 +18,24 @@ public class EvidencijaPolaznika {
             System.out.println("Email: ");
             String email = scanner.nextLine();
 
-            Polaznik polaznik = new Polaznik(ime, prezime, email);
-            polaznici.add(polaznik);
+            boolean postoji = false;
 
-            System.out.println("Polaznik je upisan. Želite li dodati još korisnika? da/ne");
-            odgovor = scanner.nextLine();
+            for (Polaznik polaznik : polaznici) {
+                if (polaznik.getEmail().equalsIgnoreCase(email)) {
+                    postoji = true;
+                }
+            }
+
+            if (postoji) {
+                System.out.println("Korisnik već postoji. Pokušajte ponovno.");
+            } else {
+
+                Polaznik polaznik = new Polaznik(ime, prezime, email);
+                polaznici.add(polaznik);
+
+                System.out.println("Polaznik je upisan. Želite li dodati još korisnika? da/ne");
+                odgovor = scanner.nextLine();
+            }
         }
     }
 
@@ -30,34 +44,15 @@ public class EvidencijaPolaznika {
             System.out.println("Nema polaznika.");
         } else {
             for (Polaznik polaznik : polaznici) {
-                polaznik.ispisiPodatke();
+                 polaznik.ispisiPodatke();
             }
         }
 
     }
 
-    public static void pretraziEmail() {
-        System.out.println("Unesite email: ");
-        String pretraga = scanner.nextLine();
-
-        boolean postoji = false;
-
-        for (Polaznik polaznik : polaznici) {
-            if (polaznik.getEmail().equalsIgnoreCase(pretraga)) {
-                polaznik.ispisiPodatke();
-                postoji = true;
-            }
-        }
-
-        if (!postoji) {
-            System.out.println("Korisnik nije pronadjen.");
-        }
-
-    }
     public static void main(String[] args) {
 
         unesiPolaznika();
         ispisPolaznika();
-        pretraziEmail();
     }
 }
