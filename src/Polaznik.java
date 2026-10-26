@@ -1,4 +1,4 @@
-public class Polaznik implements Comparable<Polaznik>{
+public class Polaznik {
 
     private String ime;
     private String prezime;
@@ -38,8 +38,4 @@ public class Polaznik implements Comparable<Polaznik>{
         System.out.println("Polaznik: " + ime + " " + prezime + ", Email: " + email);
     }
 
-    @Override
-    public int compareTo(Polaznik o) {
-        return this.email.compareToIgnoreCase(o.email);
-    }
 }

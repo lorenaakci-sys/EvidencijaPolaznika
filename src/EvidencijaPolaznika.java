@@ -2,7 +2,7 @@ import java.util.*;
 
 public class EvidencijaPolaznika {
 
-    static HashMap<String, Polaznik> polaznici = new HashMap<>();
+    static TreeMap<String, Polaznik> polaznici = new TreeMap<>();
     static Scanner scanner = new Scanner(System.in);
 
     public static void unesiPolaznika() {
@@ -32,11 +32,10 @@ public class EvidencijaPolaznika {
         if (polaznici.isEmpty()) {
             System.out.println("Nema polaznika.");
         } else {
-            TreeSet<Polaznik> sortirani = new TreeSet<>(polaznici.values());
-
-            for (Polaznik polaznik : sortirani) {
-                polaznik.ispisiPodatke();
+            for (String email : polaznici.keySet()) {
+                polaznici.get(email).ispisiPodatke();
             }
+
         }
 
     }
