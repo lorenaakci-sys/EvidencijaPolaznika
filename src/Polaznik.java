@@ -40,6 +40,6 @@ public class Polaznik implements Comparable<Polaznik>{
 
     @Override
     public int compareTo(Polaznik o) {
-        return this.prezime.compareToIgnoreCase(o.prezime);
+        return this.email.compareToIgnoreCase(o.email);
     }
 }

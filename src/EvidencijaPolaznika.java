@@ -2,7 +2,7 @@ import java.util.*;
 
 public class EvidencijaPolaznika {
 
-    static TreeSet<Polaznik> polaznici = new TreeSet<>();
+    static HashMap<String, Polaznik> polaznici = new HashMap<>();
     static Scanner scanner = new Scanner(System.in);
 
     public static void unesiPolaznika() {
@@ -16,20 +16,11 @@ public class EvidencijaPolaznika {
             System.out.println("Email: ");
             String email = scanner.nextLine();
 
-            boolean postoji = false;
-
-            for (Polaznik polaznik : polaznici) {
-                if (polaznik.getEmail().equalsIgnoreCase(email)) {
-                    postoji = true;
-                }
-            }
-
-            if (postoji) {
-                System.out.println("Korisnik već postoji. Pokušajte ponovno.");
+            if (polaznici.containsKey(email)) {
+                System.out.println("Polaznik već postoji.");
             } else {
-
                 Polaznik polaznik = new Polaznik(ime, prezime, email);
-                polaznici.add(polaznik);
+                polaznici.put(email, polaznik);
 
                 System.out.println("Polaznik je upisan. Želite li dodati još korisnika? da/ne");
                 odgovor = scanner.nextLine();
@@ -41,8 +32,10 @@ public class EvidencijaPolaznika {
         if (polaznici.isEmpty()) {
             System.out.println("Nema polaznika.");
         } else {
-            for (Polaznik polaznik : polaznici) {
-                 polaznik.ispisiPodatke();
+            TreeSet<Polaznik> sortirani = new TreeSet<>(polaznici.values());
+
+            for (Polaznik polaznik : sortirani) {
+                polaznik.ispisiPodatke();
             }
         }
 
