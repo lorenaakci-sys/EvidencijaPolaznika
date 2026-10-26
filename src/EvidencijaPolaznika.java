@@ -1,10 +1,8 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Scanner;
+import java.util.*;
 
 public class EvidencijaPolaznika {
 
-    static HashSet<Polaznik> polaznici = new HashSet<>();
+    static TreeSet<Polaznik> polaznici = new TreeSet<>();
     static Scanner scanner = new Scanner(System.in);
 
     public static void unesiPolaznika() {
